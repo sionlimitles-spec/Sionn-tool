@@ -1,6 +1,6 @@
-import AnimeCard from "@/components/AnimeCard";
+import AnimeCard from "../components/AnimeCard";
 import { Play, Sparkle } from "@phosphor-icons/react/dist/ssr";
-import { getTrendingAnime } from "@/lib/api";
+import { getTrendingAnime } from "../lib/api";
 
 export default async function Home() {
   const trendingAnime = await getTrendingAnime();
