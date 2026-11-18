@@ -1,9 +1,17 @@
-import AnimeCard from "../components/AnimeCard";
-import { Play, Sparkle } from "@phosphor-icons/react/dist/ssr";
-import { getTrendingAnime } from "../lib/api";
+"use client";
 
-export default async function Home() {
-  const trendingAnime = await getTrendingAnime();
+import { useEffect, useState } from "react";
+import AnimeCard from "../components/AnimeCard";
+import { Play, Sparkle } from "@phosphor-icons/react";
+import { getTrendingAnime, AnimeData } from "../lib/api";
+
+export default function Home() {
+  const [trendingAnime, setTrendingAnime] = useState<AnimeData[]>([]);
+
+  useEffect(() => {
+    // Mengambil data saat halaman dimuat di browser
+    getTrendingAnime().then((data) => setTrendingAnime(data));
+  }, []);
 
   return (
     <main className="min-h-screen bg-bg-dark text-white p-6 md:p-12 max-w-7xl mx-auto">
@@ -60,7 +68,7 @@ export default async function Home() {
           
           {trendingAnime.length === 0 && (
             <div className="col-span-full py-12 text-center border border-white/5 rounded-2xl bg-card-dark">
-              <p className="text-gray-500">Data anime belum tersedia atau API sedang down.</p>
+              <p className="text-gray-500">Memuat data anime...</p>
             </div>
           )}
         </div>
