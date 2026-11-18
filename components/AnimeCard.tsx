@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Star, Play, CheckCircle, Clock } from "@phosphor-icons/react/dist/ssr";
+import { Star, Play, CheckCircle, Clock } from "@phosphor-icons/react";
 
 export interface AnimeCardProps {
   id: string;
